@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+# トップページ (テスト用の暫定関数)
+def top(request):
+    return render(request, "books/top.html")

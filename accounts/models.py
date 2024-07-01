@@ -35,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager() # Userマネージャーオブジェクトのコンポジション
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']   # 必須フィールドを指定
 
     def __str__(self):
         return self.email

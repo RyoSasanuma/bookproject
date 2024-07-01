@@ -8,7 +8,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('books:list')
+            return redirect('top')
     else:
         form = CustomUserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})

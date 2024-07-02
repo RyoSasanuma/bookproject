@@ -5,7 +5,7 @@
     <h2>ログイン</h2>
     <form method="post">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{{ next }}" /> <!-- urls.pyのredirect_authenticated_user=Trueのための設定？ -->
         {% bootstrap_form form %}
         {% bootstrap_button button_type="submit" content="ログイン" %}
     </form>

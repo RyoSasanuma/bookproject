@@ -126,3 +126,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User' # カスタムユーザーモデル設定
+
+AUTHENTICATION_BACKENDS =[
+    'django.contrib.auth.backends.ModelBackend',    # デフォルト認証バックエンド
+    'accounts.backends.EmailAuthBackend',           # カスタム認証バックエンド
+]

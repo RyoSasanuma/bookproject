@@ -14,6 +14,9 @@ class UserManager(BaseUserManager):
         return user
     # Django管理画面のスーパーユーザーモデルデータ作成用メソッド？
     def create_superuser(self, email, password=None, **extra_fields):
+        """ ※: Djangoの管理画面からスーパーユーザーを作成する際には、自動的に create_superuser メソッドが呼び出されます。
+                これにより、管理画面を通じて作成されたユーザーは適切なスーパーユーザー権限を持つことになります。
+        """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -21,8 +24,8 @@ class UserManager(BaseUserManager):
     
 """ カスタムユーザーモデル """
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.AutoField(primary_key=True) # 明示的にidフィールドを定義
-    email = models.EmailField(unique=True)  # メールアドレス
+    id = models.AutoField(primary_key=True)             # 明示的にidフィールドを定義
+    email = models.EmailField(unique=True)              # メールアドレス
     """ AbstractBaseUser.passward = password = models.CharField(_("password"), max_length=128)""" # パスワード
     first_name = models.CharField(max_length=30)        # 名
     last_name = models.CharField(max_length=30)         # 姓

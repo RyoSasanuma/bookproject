@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 from django.utils.text import capfirst
+from django.utils.translation import gettext_lazy as _
 from .models import User
 
 UserModel = get_user_model()
@@ -9,10 +10,10 @@ UserModel = get_user_model()
 """ Eメール用のログイン認証画面用カスタムフォーム """  # これは必要か？『実践本』の意図がわからない ←　絶対必要
 class EmailAuthenticationForm(forms.Form):
     email = forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'autofocus': True}))
-    password = forms.CharField(label="Password", strip=False, widget=forms.PasswordInput)
+    password = forms.CharField(label=_("Password"), strip=False, widget=forms.PasswordInput)
 
     error_messages = {'invalid_login': "Eメールアドレス または パスワードに誤りがあります。",
-                      'inactive': "This account is inactive.",
+                      'inactive': _("This account is inactive."),
                       }
     
     def __init__(self, request=None, *args, **kwargs):
@@ -45,8 +46,8 @@ class EmailAuthenticationForm(forms.Form):
         if self.user_cache:
             return self.user_cache.id
         return None
-    
-    def get_user(self):         # 必須メソッド
+
+    def get_user(self):         # 必須メソッド 疑問：何が必須なのかわからない
         return self.user_cache
         
 """ ユーザー登録用カスタムモデルフォーム """        
@@ -55,8 +56,10 @@ class CustomUserCreationForm(UserCreationForm):
     新しいユーザーを作成するためのフォーム。
     すべての必須フィールドと、繰り返し入力するパスワードフィールドを含みます。
     """
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput)
+    first_name = forms.CharField(label=_("first name"), widget=forms.PasswordInput)
+    last_name = forms.CharField(label=_("last name"), widget=forms.PasswordInput)
 
     class Meta(UserCreationForm.Meta):
         model = User

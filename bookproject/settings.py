@@ -131,3 +131,5 @@ AUTHENTICATION_BACKENDS =[
     'django.contrib.auth.backends.ModelBackend',    # デフォルト認証バックエンド
     'accounts.backends.EmailAuthBackend',           # カスタム認証バックエンド
 ]
+
+LOGIN_REDIRECT_URL = '/'

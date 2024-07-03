@@ -12,6 +12,7 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
     # Django管理画面のスーパーユーザーモデルデータ作成用メソッド？
     def create_superuser(self, email, password=None, **extra_fields):
         """ ※: Djangoの管理画面からスーパーユーザーを作成する際には、自動的に create_superuser メソッドが呼び出されます。
@@ -19,6 +20,11 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
 
         return self.create_user(email, password, **extra_fields)
     
@@ -42,3 +48,15 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+    def has_perm(self, perm, obj=None):
+        """
+        PermissionsMixin 継承
+        ユーザーが指定されたすべての権限を持っている場合に True を返します。
+        オブジェクトが渡された場合、そのオブジェクトに対してユーザーがすべての必要な権限を持っているかどうかを確認します。
+        """
+        return True
+    
+    def has_module_perms(self, app_label):
+        return True
+    

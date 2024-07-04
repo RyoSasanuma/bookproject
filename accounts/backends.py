@@ -11,6 +11,7 @@ class EmailAuthBackend(BaseBackend):
             return None
 
         if user.check_password(password):
+            user.backend = 'accounts.backends.EmailAuthBackend'  # ここでカスタムバックエンド認証クラスを指定しないとユーザー登録処理でエラー
             return user
         return None
 

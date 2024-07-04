@@ -14,7 +14,7 @@ class SignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request, user)
+        login(self.request, user, backend='accounts.backends.EmailAuthBackend')
         messages.add_message(self.request, messages.SUCCESS, "会員登録に成功しました。")
         self.object = user
         return HttpResponseRedirect(self.get_success_url())

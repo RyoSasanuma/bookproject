@@ -58,8 +58,8 @@ class CustomUserCreationForm(UserCreationForm):
     """
     password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput)
-    first_name = forms.CharField(label=_("first name"), widget=forms.PasswordInput)
-    last_name = forms.CharField(label=_("last name"), widget=forms.PasswordInput)
+    first_name = forms.CharField(label=_("first name"))
+    last_name = forms.CharField(label=_("last name"))
 
     class Meta(UserCreationForm.Meta):
         model = User

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+  <h2>Book List</h2>
+  <ul>
+    {% for book in books %}
+      <li>{{ book.title }} - {{ book.authors }} - <a href="{% url 'edit' book.pk %}">Edit</a> - <a href="{% url 'delete' book.pk %}">Delete</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'fetch' %}">Fetch book info by ISBN</a>
+{% endblock %}

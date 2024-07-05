@@ -1,9 +1,14 @@
 from django.urls import path
-from . import views
+from books import views
 
 urlpatterns = [
-    path('books/', views.book_list, name='book_list'),
-    path('books/add/', views.book_add, name='book_add'),
-    path('books/<int:pk>/edit/', views.book_edit, name='book_edit'),
-    path('books/<int:pk>/delete/', views.book_delete, name='book_delete'),
+    path('', views.book_list, name='list'),
+    path('<int:pk>/edit/', views.book_edit, name='edit'),
+    path('<int:pk>/delete/', views.book_delete, name='delete'),
+    path('fetch/', views.fetch_book, name='fetch'),
+    path('add/', views.book_add, name='add'),
 ]
+
+"""
+表示するhtmlファイルは同じでも、URLは違うケースもあるのか？
+"""

@@ -3,7 +3,6 @@ from accounts.models import User
 
 class Book(models.Model):
     id = models.AutoField(primary_key=True)                                 # 明示的にidフィールドを定義
-    
     isbn_code = models.CharField(max_length=13, unique=True)                # ISVNコード[必須]
     title = models.CharField(max_length=200)                                # タイトル[必須]
     authors = models.CharField(max_length=200)                              # 著者[必須]　※リストで返ってくる
@@ -17,7 +16,6 @@ class Book(models.Model):
     small_thumbnail = models.URLField(blank=True, null=True)                # 小さいサムネイル画像のURL
     thumbnail = models.URLField(blank=True, null=True)                      # サムネイル画像のURL
     language = models.CharField(max_length=10, blank=True, null=True)       # 書籍の言語コード（ISO 639-1)[必須]
-
     date_add = models.DateTimeField(auto_now_add=True)                      # 登録日
     user = models.ForeignKey(User, on_delete=models.CASCADE)                # 登録ユーザー
 

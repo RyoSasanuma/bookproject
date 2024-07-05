@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+  <h2>書籍情報取得</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="isbn">ISBNコード:</label>
+    <input type="text" name="isbn" id="isbn" required>
+    {% bootstrap_button button_type="submit" content="情報取得" %}
+  </form>
+{% endblock %}
+
+<!--
+    Djangoのフォームが送信されたときにどのビュー関数が処理を担当するかは、
+    URL設定 (urls.py) とフォームの action 属性によって決まります。
+    フォームの action 属性を指定しない場合、フォームはデフォルトで現在のURLに対して送信されます。 
+-->
+
+<!--
+    HTMLのrequired属性は、フォームの入力フィールドに対して設定できる属性で、
+    この属性が設定された入力フィールドは、フォームが送信される前に値が入力されていることを要求します。
+    ユーザーがこのフィールドに値を入力しないままフォームを送信しようとすると、
+    ブラウザは自動的にエラーメッセージを表示し、フォームの送信をブロックします。
+-->

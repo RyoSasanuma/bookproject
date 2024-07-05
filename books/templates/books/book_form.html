@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% if form.instance.pk %}図書編集{% else %}図書新規登録{% endif %} Book</title>
-</head>
-<body>
-    <h2>図書{% if form.instance.pk %}編集{% else %}新規登録{% endif %}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">{% if form.instance.pk %}変更{% else %}登録{% endif %}</button>
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+  {% if form.instance.pk %}
+    <h2>図書の編集</h2>
+    <form method="post" action="{% url 'edit' form.instance.pk %}">
+  {% else %}
+    <h2>図書の新規登録</h2>
+    <form method="post" action="{% url 'add' %}">
+  {% endif %}
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% bootstrap_button button_type="submit" content="保存" %}
     </form>
-</body>
-</html>
+    <a href="{% url 'list' %}">リストに戻る</a>
+{% endblock %}

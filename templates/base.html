@@ -1,19 +1,19 @@
 {% load static %}
 {% load django_bootstrap5 %}
-
 <html>
     <head>
         <meta charset="utf-8">
         <title>図書登録</title>
         {% bootstrap_css %}
         {% bootstrap_javascript %}
-        <link rel="stylesheet" href="{% static 'bookproject/css/style.css' %}">
+
+        {% block extra_css %}{% endblock %}
         {% block extraheader %}{% endblock %}
     </head>
     <body>
         <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
             <div class="container justify-content-between">
-                <a href ="/" class="navbar-brand">図書登録</a>
+                <a href ="/" class="navbar-brand">GooleBooksAPI連携学習</a>
                 <ul class="navbar-nav mr-md-2">
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">ログアウト</a></li>

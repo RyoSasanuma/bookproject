@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 """ 登録図書リスト一覧画面表示（TOPページ） """
 @login_required
 def book_list(request):
-    books = Book.objects.filter(user=request.user)
+    books = Book.objects.all()           # Book.objects.filter(user=request.user)
     return render(request, 'books/book_list.html', {'books': books})
 
 """ ISBNコード入力による図書情報取得"""
@@ -57,7 +57,7 @@ def book_add(request):
 """ 既存登録済図書情報編集処理 """
 @login_required
 def book_edit(request, pk):
-    book = get_object_or_404(Book, pk=pk, user=request.user)
+    book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
         if form.is_valid():
@@ -70,7 +70,7 @@ def book_edit(request, pk):
 """ 既存登録済図書情報削除処理 """
 @login_required
 def book_delete(request, pk):
-    book = get_object_or_404(Book, pk=pk, user=request.user)
+    book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
         book.delete()
         return redirect('list')

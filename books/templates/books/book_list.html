@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load django_bootstrap5 %}
+
+{% block title %}Book List{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'books/css/style.css' %}">
+{% endblock %}
 
 {% block main %}
   <h2>Book List</h2>
-  <ul>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
     {% for book in books %}
-      <li>{{ book.title }} - {{ book.authors }} - <a href="{% url 'edit' book.pk %}">Edit</a> - <a href="{% url 'delete' book.pk %}">Delete</a></li>
+      <div class="col">
+        <div class="card h-100 d-flex flex-column">
+          <img src="{{book.small_thumbnail}}" class="card-img-top img-fluid custom-img" alt="情報無し">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title flex-grow-1">{{ book.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ book.authors }}</h6>
+            <div class="mt-auto">
+              <a href="{% url 'edit' book.pk %}" class="btn btn-primary">編集</a>
+              <a href="{% url 'delete' book.pk %}" class="btn btn-primary">削除</a></li>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
-  <a href="{% url 'fetch' %}">Fetch book info by ISBN</a>
+  </div>
+  <a href="{% url 'fetch' %}" class="btn btn-success mt-3">図書の登録</a>
 {% endblock %}

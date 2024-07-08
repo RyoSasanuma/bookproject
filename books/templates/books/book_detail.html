@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}Book Detail{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'books/css/style.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="card mt-3">
+        <div class="card-body card-body-detail">
+            <div class="row g-4">
+                <div class="col-md-8">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>タイトル</th>
+                                <td>{{ book.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>著者</th>
+                                <td>{{ book.authors }}</td>
+                            </tr>
+                            <tr>
+                                <th>出版社</th>
+                                <td>{{ book.publisher }}</td>
+                            </tr>
+                            <tr>
+                                <th>出版日</th>
+                                <td>{{ book.published_date }}</td>
+                            </tr>
+                            <tr>
+                                <th>カテゴリー</th>
+                                <td>{{ book.categories }}</td>
+                            <tr>
+                            <tr>
+                                <th>ページ数</th>
+                                <td>{{ book.page_count }}</td>
+                            </tr>
+                            <tr>
+                                <th>ISBNコード</th>
+                                <td>{{ book.isbn_code }}</td>
+                            </tr>
+                            <tr>
+                                <th>登録日</th>
+                                <td>{{ book.date_add }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>書籍内容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ book.description }}</td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <div class="row g-4">
+                        <img src="{{book.thumbnail}}" class="rounded mx-auto d-block img-detail" alt="情報無し">
+                        <div class="m-5">
+                            <a href="{% url 'list' %}" class="btn btn-primary btn-lg me-3">戻る</a>
+                            <a href="{% url 'edit' book.pk %}" class="btn btn-primary btn-lg me-3">編集</a>
+                            <a href="{% url 'delete' book.pk %}" class="btn btn-primary btn-lg">削除</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

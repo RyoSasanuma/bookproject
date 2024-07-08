@@ -54,6 +54,14 @@ def book_add(request):
         
     return render(request, 'books/book_form.html', {'error': 'エラー'})
 
+""" 登録済図書詳細画面表示処理 """
+@login_required
+def book_detail(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    return render(request, 'books/book_detail.html', {'book': book})
+
+
+
 """ 既存登録済図書情報編集処理 """
 @login_required
 def book_edit(request, pk):

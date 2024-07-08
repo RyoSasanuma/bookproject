@@ -1,19 +1,26 @@
-.custom-img {
+.card-img-list {
     width: 100%;  /* 親要素の幅に合わせる */
     height: 200px;  /* 固定高さを設定 */
     object-fit: contain;  /* アスペクト比を維持して全体を表示 */
 }
-.card {
+.card-list {
     display: flex;
     flex-direction: column;
 }
-.card-body {
+.card-body-list {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;  /* カードボディが利用可能な高さを埋めるようにする */
 }
-.card-title {
+.card-title-list {
     flex-grow: 1;  /* タイトルがボディの高さを埋めるようにする */
+}
+
+
+.img-detail{
+    width: 100%; /* カラムの幅にフィットさせる */
+    max-width: 300px; /* 最大幅を設定 */
+    height: auto; /* アスペクト比を維持 */
 }

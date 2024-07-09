@@ -10,41 +10,41 @@
 
 {% block main %}
     <div class="card mt-3">
-        <div class="card-body card-body-detail">
+        <div class="card-body">
             <div class="row g-4">
                 <div class="col-md-8">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>タイトル</th>
+                                <th class="th-detail_01">タイトル</th>
                                 <td>{{ book.title }}</td>
                             </tr>
                             <tr>
-                                <th>著者</th>
+                                <th class="th-detail_01">著者</th>
                                 <td>{{ book.authors }}</td>
                             </tr>
                             <tr>
-                                <th>出版社</th>
+                                <th class="th-detail_01">出版社</th>
                                 <td>{{ book.publisher }}</td>
                             </tr>
                             <tr>
-                                <th>出版日</th>
+                                <th class="th-detail_01">出版日</th>
                                 <td>{{ book.published_date }}</td>
                             </tr>
                             <tr>
-                                <th>カテゴリー</th>
+                                <th class="th-detail_01">カテゴリー</th>
                                 <td>{{ book.categories }}</td>
+                            </tr>
                             <tr>
-                            <tr>
-                                <th>ページ数</th>
+                                <th class="th-detail_01">ページ数</th>
                                 <td>{{ book.page_count }}</td>
                             </tr>
                             <tr>
-                                <th>ISBNコード</th>
+                                <th class="th-detail_01">ISBNコード</th>
                                 <td>{{ book.isbn_code }}</td>
                             </tr>
                             <tr>
-                                <th>登録日</th>
+                                <th class="th-detail_01">登録日</th>
                                 <td>{{ book.date_add }}</td>
                             </tr>
                         </tbody>
@@ -52,7 +52,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>書籍内容</th>
+                                <th class="th-detail_02">書籍内容</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,9 +75,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 {% endblock %}

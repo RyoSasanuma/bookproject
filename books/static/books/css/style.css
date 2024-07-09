@@ -1,12 +1,18 @@
+.h2-list{
+    margin: 1rem auto;
+}
+
 .card-img-list {
     width: 100%;  /* 親要素の幅に合わせる */
     height: 200px;  /* 固定高さを設定 */
     object-fit: contain;  /* アスペクト比を維持して全体を表示 */
 }
+
 .card-list {
     display: flex;
     flex-direction: column;
 }
+
 .card-body-list {
     flex: 1 1 auto;
     display: flex;
@@ -14,13 +20,33 @@
     justify-content: space-between;
     flex-grow: 1;  /* カードボディが利用可能な高さを埋めるようにする */
 }
+
 .card-title-list {
     flex-grow: 1;  /* タイトルがボディの高さを埋めるようにする */
 }
+
+
 
 
 .img-detail{
     width: 100%; /* カラムの幅にフィットさせる */
     max-width: 300px; /* 最大幅を設定 */
     height: auto; /* アスペクト比を維持 */
+}
+
+.th-detail_01{
+    background-color: #FFCC99!important;
+    color: #000000!important;
+}
+
+
+.th-detail_02 {
+    background-color: #CCCCFF!important;
+    color: #000000!important;
+}
+
+
+
+.h2-fetch{
+    margin: 1rem auto;
 }

@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load django_bootstrap5 %}
 
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'books/css/style.css' %}">
+{% endblock %}
+
 {% block main %}
-  <h2>書籍情報取得</h2>
-  <form method="post">
-    {% csrf_token %}
-    <label for="isbn">ISBNコード:</label>
-    <input type="text" name="isbn" id="isbn" required>
-    {% bootstrap_button button_type="submit" content="情報取得" %}
-  </form>
+  <h2 class="h2-fetch">書籍情報取得</h2>
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      <label for="colFormLabelLg" class="col-md-2 col-form-label col-form-label-lg">ISBNコード</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control form-control-lg" placeholder="ISBN" name="isbn" id="isbn" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg mt-3">情報取得</button>
+    </form>
+  </div>
 {% endblock %}
 
 <!--
